@@ -39,7 +39,7 @@ export default function TypingTest() {
 
   useEffect(() => {
     generateWords()
-  }, [language, mode, wordCount])
+  }, [language, mode, wordCount, duration])
 
   const generateWords = () => {
     const words = WORD_BANKS[language as keyof typeof WORD_BANKS]
