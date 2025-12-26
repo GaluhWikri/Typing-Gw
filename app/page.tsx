@@ -8,6 +8,7 @@ import { RotateCcw } from "lucide-react"
 import { TestResults } from "@/components/test-results"
 import { ConfigBar } from "@/components/config-bar"
 import { WORD_BANKS } from "@/lib/word-banks"
+import { ModeToggle } from "@/components/mode-toggle"
 
 type Language = "english" | "indonesian"
 type Mode = "time" | "words"
@@ -273,11 +274,15 @@ export default function TypingTest() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 font-mono">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-start pt-32 p-4 font-mono relative">
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
       <div className="w-full max-w-5xl">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="mb-12 text-center">
           <div className="flex items-center justify-center gap-4 mb-2">
-            <img src="/icon.png" alt="Logo" className="w-18 h-auto object-contain" />
+            <img src="/icon1.png" alt="Logo" className="w-18 h-auto object-contain dark:hidden" />
+            <img src="/icon.png" alt="Logo" className="w-18 h-auto object-contain hidden dark:block" />
             <h1 className="text-4xl font-bold text-foreground tracking-tight">Typing Gw</h1>
           </div>
           <p className="text-muted-foreground text-sm">Test your typing speed</p>
@@ -317,7 +322,7 @@ export default function TypingTest() {
 
         <div
           ref={testAreaRef}
-          className="relative mb-8 p-8 bg-card border border-border rounded-lg cursor-text hover:border-primary/50 transition-colors"
+          className="relative mb-8 p-8 bg-card border border-border rounded-lg cursor-text hover:border-primary/50 transition-colors min-h-[300px] flex items-start justify-center"
           onClick={() => inputRef.current?.focus()}
         >
           <div className="text-2xl leading-relaxed flex flex-wrap gap-x-3 gap-y-4">
